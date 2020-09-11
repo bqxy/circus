@@ -1,11 +1,14 @@
 package circus;
 
+import java.util.ArrayList;
 import circus.animal.Animal;
 import circus.animal.Duck;
 import circus.animal.Parrot;
 import circus.stuff.Cannon;
 import circus.stuff.Equipment;
 import circus.stuff.Ladder;
+
+import java.util.Arrays;
 
 public class Circus {
     private static Animal[] animals = {
@@ -43,5 +46,20 @@ public class Circus {
         makeAnimalsTalk();
         System.out.println("Total value of equipments " + calculateValue(equipments));
         System.out.println("Total value of animals " + calculateValue(animals));
+
+        ArrayList<Animal> animalArrayList = new ArrayList<>(Arrays.asList(animals));
+
+        animalArrayList.add(new Duck("Goose"));
+        animalArrayList.add(new Parrot("Dolly"));
+
+        Duck louis = new Duck("Louis");
+        animalArrayList.add(louis);
+
+        animalArrayList.sort(Animal.AnimalNameComparator);
+        for (Animal a: animalArrayList) {
+            System.out.println(a);
+        }
+        System.out.println("Number of animals: " + animalArrayList.size());
+        System.out.println("Index of Louis " + animalArrayList.indexOf(louis));
     }
 }
