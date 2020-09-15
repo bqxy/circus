@@ -4,11 +4,15 @@ import java.util.ArrayList;
 import circus.animal.Animal;
 import circus.animal.Duck;
 import circus.animal.Parrot;
+import circus.stuff.Cage;
 import circus.stuff.Cannon;
 import circus.stuff.Equipment;
 import circus.stuff.Ladder;
 
+
 import java.util.Arrays;
+
+
 
 public class Circus {
     private static Animal[] animals = {
@@ -61,5 +65,21 @@ public class Circus {
         }
         System.out.println("Number of animals: " + animalArrayList.size());
         System.out.println("Index of Louis " + animalArrayList.indexOf(louis));
+
+        Cage<Duck> duckCage = new Cage<>();
+        Duck duck = new Duck("Heuye");
+        duckCage.lockUp(duck);
+        Parrot parrot = new Parrot("Popper");
+        Cage<Parrot> parrotCage = new Cage<>();
+        parrotCage.lockUp(parrot);
+
+        ArrayList<Cage> cages = new ArrayList<>();
+        cages.add(duckCage);
+        cages.add(parrotCage);
+
+        for(Cage c: cages) {
+            c.release();
+        }
+
     }
 }
